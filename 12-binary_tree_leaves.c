@@ -9,13 +9,13 @@
  */
 size_t binary_tree_leaves(const binary_tree_t *tree)
 {
-        size_t size = 0;
+        size_t leaves = 0;
 
-        if (tree)
-        {
-                size += 1;
-                size += binary_tree_size(tree->left);
-                size += binary_tree_size(tree->right);
-        }
-        return(leaves)
+	if (tree)
+	{
+		leaves += (tree->left && tree->right) ? 1 : 0;
+		leaves += binary_tree_leaves(tree->left);
+		leaves += binary_tree_leaves(tree->right);
+	}
+	return (leaves);
 }
